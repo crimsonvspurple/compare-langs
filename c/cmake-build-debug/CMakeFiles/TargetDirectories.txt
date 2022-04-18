@@ -1,0 +1,3 @@
+C:/Users/riasa/IdeaProjects/425/assignment2/c/cmake-build-debug/CMakeFiles/c.dir
+C:/Users/riasa/IdeaProjects/425/assignment2/c/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/riasa/IdeaProjects/425/assignment2/c/cmake-build-debug/CMakeFiles/rebuild_cache.dir
