@@ -8,7 +8,7 @@ import java.nio.file.StandardOpenOption;
 public class Main {
 
     public static void main(String[] args) {
-        final int ITERATION = 100;                                    // iteration count per size
+        final int ITERATION = 20;                                     // iteration count per size
         final int[] SIZES = {16, 32, 64, 128, 256, 512, 1024};        // matrix sizes (square) to consider
 
 
@@ -16,7 +16,7 @@ public class Main {
             Matrix[] a = new Matrix[ITERATION];                 // array of a
             Matrix[] b = new Matrix[ITERATION];                 // array of b
             for (int i = 0; i < ITERATION; i++) {               // populate the arrays
-                String sequence = String.format("%03d", i);         // make numbers at least 3 digit (for file name)
+                String sequence = String.format("%04d", i);         // make numbers at least 3 digit (for file name)
                 a[i] = new Matrix(size);                            // init a with current size
                 b[i] = new Matrix(size);                            // init b with current size
 //                a[i].randomize();                                 // generate random matrix for a
@@ -49,11 +49,11 @@ public class Main {
             log.append(l);
             log.append("\n");
         }
-        String dim = String.format("%03d", size);
+        String dim = String.format("%04d", size);
         System.out.println("Best  Time for [" + dim + " x " + dim + "]: " + bestTime + "ns | " + (bestTime / 1000000.0) + "ms");
         System.out.println("Total Time for [" + dim + " x " + dim + "]: " + totalTime + "ns | " + (totalTime / 1000000.0) + "ms | " + (totalTime / 1000000000.0) + "s");
         try {
-            File file = new File("../benchmark/java" + dim + ".log");
+            File file = new File("../benchmark/javanojit" + dim + ".log");
             // System.out.println("Saving to: " + file.getAbsolutePath());
             Files.writeString(file.toPath(), log.toString(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException ioe) {
