@@ -1,4 +1,4 @@
-PARA
+Jav PARA
 
 Best  Time for [016 x 016]: 97100ns | 0.0971ms
 Total Time for [016 x 016]: 159766500ns | 159.7665ms | 0.1597665s
@@ -16,7 +16,7 @@ Best  Time for [1024 x 1024]: 763535200ns | 763.5352ms
 Total Time for [1024 x 1024]: 83823011800ns | 83823.0118ms | 83.8230118s
 Check benchmark folder for logs.
 
-SEQ
+Java SEQ
 
 Best  Time for [016 x 016]: 12800ns | 0.0128ms
 Total Time for [016 x 016]: 3803400ns | 3.8034ms | 0.0038034s
@@ -33,3 +33,41 @@ Total Time for [512 x 512]: 14458820300ns | 14458.8203ms | 14.4588203s
 Best  Time for [1024 x 1024]: 1153747900ns | 1153.7479ms
 Total Time for [1024 x 1024]: 168718232200ns | 168718.2322ms | 168.7182322s
 Check benchmark folder for logs.
+
+Java No JIT
+
+
+
+C (arr) (debug)
+Path is: ../../benchmark/c016.log
+Best Time: 0.000000 | Total Time: 0.001000
+Path is: ../../benchmark/c032.log
+Best Time: 0.000000 | Total Time: 0.012000
+Path is: ../../benchmark/c064.log
+Best Time: 0.000000 | Total Time: 0.094000
+Path is: ../../benchmark/c128.log
+Best Time: 0.007000 | Total Time: 0.767000
+Path is: ../../benchmark/c256.log
+Best Time: 0.059000 | Total Time: 6.044000
+Path is: ../../benchmark/c512.log
+Best Time: 0.607000 | Total Time: 61.777000
+Path is: ../../benchmark/c1024.log
+Best Time: 4.955000 | Total Time: 772.340000
+
+
+C (arr) (release)
+Path is: ../../benchmark/c016.log
+Best Time: 0.000000 | Total Time: 0.000000
+Path is: ../../benchmark/c032.log
+Best Time: 0.000000 | Total Time: 0.002000
+Path is: ../../benchmark/c064.log
+Best Time: 0.000000 | Total Time: 0.017000
+Path is: ../../benchmark/c128.log
+Best Time: 0.001000 | Total Time: 0.209000
+Path is: ../../benchmark/c256.log
+Best Time: 0.015000 | Total Time: 1.572000
+Path is: ../../benchmark/c512.log
+Best Time: 0.172000 | Total Time: 17.604000
+Path is: ../../benchmark/c1024.log
+Best Time: 4.721000 | Total Time: 513.060000
+
