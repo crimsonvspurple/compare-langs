@@ -42,7 +42,7 @@ void saveBenchMark(int ITERATION, int size, double benchmark[]) {
     strcat(path, "../../benchmark/c");
 
     char sizeString[128] = "";
-    sprintf(sizeString, "%03d", size);
+    sprintf(sizeString, "%04d", size);
     strcat(path, sizeString);
     strcat(path, ".log");
 
@@ -67,7 +67,7 @@ void saveBenchMark(int ITERATION, int size, double benchmark[]) {
 
 
 int main() {
-    const int ITERATION = 100;
+    const int ITERATION = 20;
 //    const int SIZES[] = {256};
     int SIZES[] = {16, 32, 64, 128, 256, 512, 1024};
 
