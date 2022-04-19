@@ -80,7 +80,7 @@ int main() {
 
         for (int i = 0; i < ITERATION; ++i) {   // for each iteration per size
             char iterString[1024] = "";
-            sprintf(iterString, "%03d", ITERATION - 1);
+            sprintf(iterString, "%04d", ITERATION - 1);
 
             readMatrix(i, iterString, size, "a", size, a);
             readMatrix(i, iterString, size, "b", size, b);
