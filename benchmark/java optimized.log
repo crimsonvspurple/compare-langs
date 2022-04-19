@@ -36,6 +36,21 @@ Check benchmark folder for logs.
 
 Java No JIT
 
+Best  Time for [016 x 016]: 88200ns | 0.0882ms
+Total Time for [016 x 016]: 9763800ns | 9.7638ms | 0.0097638s
+Best  Time for [032 x 032]: 665600ns | 0.6656ms
+Total Time for [032 x 032]: 72976900ns | 72.9769ms | 0.0729769s
+Best  Time for [064 x 064]: 5323000ns | 5.323ms
+Total Time for [064 x 064]: 562879400ns | 562.8794ms | 0.5628794s
+Best  Time for [128 x 128]: 42099800ns | 42.0998ms
+Total Time for [128 x 128]: 4337155500ns | 4337.1555ms | 4.3371555s
+Best  Time for [256 x 256]: 335920100ns | 335.9201ms
+Total Time for [256 x 256]: 34361205600ns | 34361.2056ms | 34.3612056s
+Best  Time for [512 x 512]: 2676215000ns | 2676.215ms
+Total Time for [512 x 512]: 275701095900ns | 275701.0959ms | 275.7010959s
+Best  Time for [1024 x 1024]: 22234677800ns | 22234.6778ms
+Total Time for [1024 x 1024]: 2419738180200ns | 2419738.1802ms | 2419.7381802s
+Check benchmark folder for logs.
 
 
 C (arr) (debug)
