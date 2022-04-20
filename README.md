@@ -68,7 +68,7 @@ For example, `python-np: 1024, 122.44` means, it took `122.44 seconds` to multip
 
 # Actual Results
 
-![image](https://user-images.githubusercontent.com/11375716/164284415-06043305-d99b-4fef-a514-75f1c27936fa.png)
+![image](https://user-images.githubusercontent.com/11375716/164286093-08c72b86-0829-4a13-a048-713d931d4032.png)
 
 
 The chart contains data `7x` data points for each variations and there are `7` variations as well. So we have `49` data points in total.
