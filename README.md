@@ -30,8 +30,9 @@ Compare `C`/`Java`/`Python` Performance in Matrix Multiplication
 `python-np`: Implementation in Python using numpy library
 
 
-### Matrix Sizes
-We'll be working with square matrices ranging from `16x16` to `1024x1024`. We'll focus more on matrices above `256x256`.
+### Matrices
+ - We'll be working with square matrices ranging from `16x16` to `1024x1024`. We'll focus more on matrices above `256x256`.
+ - We'll only consider `int` types for simplicity
 
 # Testing Methodology
 - Only benchmark the matrix multiplication operation
@@ -65,9 +66,10 @@ For example, `python-np: 1024, 122.44` means, it took `122.44 seconds` to multip
 - `python-np`: This should get us similar (but slightly slower) results to `c-std` as `numpy` is an extension module written in `C`.
 
 
-# Results
+# Actual Results
 
-![image](https://user-images.githubusercontent.com/11375716/164272142-17662fee-2d61-428d-a1f2-a385758bc749.png)
+![image](https://user-images.githubusercontent.com/11375716/164284415-06043305-d99b-4fef-a514-75f1c27936fa.png)
+
 
 The chart contains data `7x` data points for each variations and there are `7` variations as well. So we have `49` data points in total.
 
@@ -89,6 +91,20 @@ We'll be explaining each of these shorty.
 - `python-np` closely follows `c-std` as predicted.
 
 ### 256x256
+- Variations of `c` are closely holding up.
+- `java` variations are slow (as expected) and `java-no-jit` is look really bad; amost as bad as `python-for`.
+- `python-for`, is already showing the extremely lack of performance of python. `python-for 256, 86s` vs `python-np 256, 0.319s`. Just by replacing `for-loops` with `numpy`'s functions which execute using `c`, we are seeing insane amount of performance difference.
+- `python-np` closely following `c-std` as before.
 
+### 512x512 and 1024x1024
+Things get really interesting here. Compared to other matrix sizes, these two are huge. The amount of mathematical operations is way higher and requires much more memory.
 
-###
+For example, mathematical operations for a matrix is `O(n^3)`.
+- `256x256`: `16M`
+- `512x512`: `134M` (8 times compared to `256x256`)
+- `1024x1024`: `1B` (62 times compared to `256x256`)
+
+- As expected of `c` variations, their times shot up due to huge number of operations increase.
+- While `java-for` and `java-stream` were slower than variations of `c` before, they have turned it upside down and now are faster than `c` variations and in one particular case, _amazingly_ faster. We'll explain this below.
+- `java-no-jit` is showing how useless Java is without JIT optimization and is only trailed by `python-for`.
+- `python-for` is so 
