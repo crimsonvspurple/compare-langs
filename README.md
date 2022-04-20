@@ -5,7 +5,7 @@ Compare `C`/`Java`/`Python` Performance in Matrix Multiplication
 - Implement matrix multiplication in C, Java and Python
   - For C, two versions
     -  Array + for loop
-    -  Pointer arithmetics + for loop
+    -  Pointer arithmetic + for loop
   - For Java, three versions
     - Standard for loop
     - Stream (Parallel)
@@ -17,7 +17,7 @@ Compare `C`/`Java`/`Python` Performance in Matrix Multiplication
 ### Variations
 `c-std`: Implementation in C using for loop and arrays (this should have been named `c-for` for coherence but too late)
 
-`c-pointer`: Implementation in C using for loop and pointer arithmetics
+`c-pointer`: Implementation in C using for loop and pointer arithmetic
 
 `java-for`: Implementation in Java using for loop and arrays
 
@@ -62,7 +62,7 @@ TBA if requested
 
 # Expected Results (Based on common beliefs)
 - `c-std`: C, being the low level system language with lowest overhead, will be fastest (well, 2nd most; see below).
-- `c-pointer`: Using pointer arithmetics, we should be able to squeeze out a little more performance and should be fastest (faster than `c-std`).
+- `c-pointer`: Using pointer arithmetic, we should be able to squeeze out a little more performance and should be fastest (faster than `c-std`).
 - `java-for`: Java, being byte-code interpreted language during runtime, will be slower than C variations.
 - `java-no-jit`: Without `JIT` optimization, Java will be extremely slow.
 - `java-stream`: This should be really fast as Java will utilize multiple CPU cores but can it be faster than C?
@@ -96,7 +96,7 @@ We'll be explaining each of these shorty.
 
 ### 256x256
 - Variations of `c` are closely holding up.
-- `java` variations are slow (as expected) and `java-no-jit` is look really bad; amost as bad as `python-for`.
+- `java` variations are slow (as expected) and `java-no-jit` is look really bad; almost as bad as `python-for`.
 - `python-for`, is already showing the extremely lack of performance of python. `python-for 256, 86s` vs `python-np 256, 0.319s`. Just by replacing `for-loops` with `numpy`'s functions which execute using `c`, we are seeing insane amount of performance difference.
 - `python-np` closely following `c-std` as before.
 
@@ -125,10 +125,19 @@ Assuming `c-std` as baseline performance,
 6. Why `python-np` is so much faster than `python-for` and almost same as `c-std`?
 
 # Explanations
-1. While theoritically, `c-pointer` should be faster, modern C compilers do amazing optimizations during compilation resulting in extremely fast machine codes. By handrolling array system using pointers, we have prevented the compiler for making every optimization it could and thus, `c-pointer` is slightly slower than `c-std`.
+1. While theoretically, `c-pointer` should be faster, modern C compilers do amazing optimizations during compilation resulting in extremely fast machine codes. By hand-rolling array system using pointers, we have prevented the compiler for making every optimization it could and thus, `c-pointer` is slightly slower than `c-std`.
 2. `java-for` implementation runs the java program with default settings where `JIT Optimization` is enabled. This causes java to utilize various loop optimizations such as `loop unrolling` and `loop tiling`. This _is_ possible to do in `C` too but we will require a huge amount of code/time for this. Libraries like `BLAS` implements these optimizations and will be even faster than any Java implementation (to be tested though).
-3. `java-stream` implementation is similar to `java-for` but it is _fully parallel_. It can and will saturate every ounch of CPU power available and come up with the result more faster as you can give it more CPU cores. Again, if we implement similar algorithm in C (very difficult), C variation _will_ outperform the java variation.
-4. `java-no-jit` is 100% pure interpretation and without any single optimization. This is theoritically as slow java as possible.
-5. `pythong-for`, same as `java-no-jit` except their interpreter is even slower.
+3. `java-stream` implementation is similar to `java-for` but it is _fully parallel_ [ [Link to Code](https://github.com/crimsonvspurple/compare-langs/blob/5f7d88e6d6766c65a0dd4514b5adb5e8e833c090/java/src/com/crimson/net/Matrix.java#L40-L46) ]. It can and will saturate every ounce of CPU power available and come up with the result more faster as you can give it more CPU cores. Again, if we implement similar algorithm in C (very difficult), C variation _will_ outperform the java variation.
+4. `java-no-jit` is 100% pure interpretation and without any single optimization. This is theoretically as slow java as possible.
+5. `python-for`, same as `java-no-jit` except their interpreter is even slower.
 6. As mentioned before, `numpy` delegates it's operations to modules written in pure C (well, 95% C, 5% C++) as such it can harness the performance of C.
 
+
+# Conclusion
+
+In general, `C` is faster but for large datasets, we need to implement non-trivial amount of optimizations ourselves (or use libraries) otherwise, it will fall behind.
+Java, on the other hand, is a breeze to write and automatically optimizes code path using JIT. It is truly an excellent balance between performance and ease of use. Finally, python is the slowest of them all but python can delegate computationally expensive tasks to extension modules written in C and harness that power. Therefore, as long as python has great extension modules, it is an excellent choice for most operations.
+
+`Loop unrolling` and `Loop Tiling` are excellent techniques and can provide a huge amount of performance boost if the programmer knows what they are doing. `Cache Oblivious Algorithm` is another concept to explore to further utilize `loop tiling` to maximize cache memory usage and increase performance by many folds.
+
+- END
